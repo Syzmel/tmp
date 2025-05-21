@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -34,8 +34,7 @@ pipeline {
                   sonarQubeServerUrl 'http://your-sonarqube-server:9000'
                    if %ERRORLEVEL% NEQ 0 exit /b 0
                 '''
-
+             }
             }
         }  
     }
-}
