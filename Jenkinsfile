@@ -2,6 +2,9 @@ pipeline {
     agent any
        environment {
        SONAR_TOKEN = '8bf909351a6f8d1ad0c61bdf9607d732b5c9a043'
+       AWS_REGION = 'ap-southeast-2' // Change based on your setup
+        AWS_APP_NAME = 'Ardavan'
+        AWS_ENV_NAME = 'Ardavan-env'
     }       
     stages {
         stage('Build') {
