@@ -6,8 +6,7 @@ pipeline {
             steps {
                                 bat '''
                   sonar-scanner ^
-                  sonarQubeServerUrl 'http://your-sonarqube-server:9000'
-                   if %ERRORLEVEL% NEQ 0 exit /b 0
+                  if %ERRORLEVEL% NEQ 0 exit /b 0
                 '''
               }
             }
