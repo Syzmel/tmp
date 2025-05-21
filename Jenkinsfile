@@ -10,6 +10,17 @@ pipeline {
                 
             }
         }
+        stage('Test') {
+            steps {
+                bat 'mvn test' // Runs JUnit tests
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit '**/target/surefire-reports/*.xml' // Publishes test reports
+            }
+        }
         stage('SonarCloud Analysis') {
             steps {
                                 bat '''
