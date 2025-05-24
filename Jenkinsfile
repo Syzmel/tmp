@@ -49,8 +49,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                def img = 'thhpd:2.4-alpine'
-                docker.image(img).run('-w', '//c/ProgramData/Jenkins/.jenkins/workspace/myproject', '-d', '-p', '80:80')   
+                bat 'docker-compose -f docker-compose.test.yml up -d'
+                  
            }                  
         }
       }
