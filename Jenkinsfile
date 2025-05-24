@@ -50,8 +50,8 @@ pipeline {
             steps {
                 bat 'docker build -t myapp:latest .'
                 bat 'docker run -d -p 8080:8080 myapp:latest'
-                }
-            }
-        }  
-    }
+        }
+      }
+   }  
+}
 
