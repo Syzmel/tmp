@@ -50,8 +50,7 @@ pipeline {
             steps {
                 script{
                 def img = 'thhpd:2.4-alpine'
-                withDockerContainer(image: img, args: '-d -p 80:80'){
-                }       
+                docker.image(img).run('-w', '//c/ProgramData/Jenkins/.jenkins/workspace/myproject', '-d', '-p', '80:80')   
            }                  
         }
       }
