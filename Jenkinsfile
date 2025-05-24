@@ -48,8 +48,10 @@ pipeline {
         }  
         stage('Deploy') {
             steps {
+                script{
                 img = 'thhpd:2.4-alpine'
                 docker.image("${img}"}.run('-d -p 80:80')
+            }                  
         }
       }
    }  
