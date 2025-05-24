@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                bat 'docker-compose -f docker-compose.test.yml up -d'
+                bat 'docker-compose -f docker-compose.yml up -d'
                   
            }                  
         }
