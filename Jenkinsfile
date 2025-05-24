@@ -50,8 +50,9 @@ pipeline {
             steps {
                 script{
                 def img = 'thhpd:2.4-alpine'
-                def container = docker.image(img).run('--rm', '-d', '-p', '80:80')
-            }                  
+                withDockerContainer(image: img, args: '-d -p 80:80'){
+                }       
+           }                  
         }
       }
    }  
