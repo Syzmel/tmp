@@ -46,14 +46,12 @@ pipeline {
                 }
             }
         }  
-        stage('Deploy to AWS Elastic Beanstalk') {
+        stage(''Deploy'') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: '973972760934']]) {
-                    bat """
-                    aws elasticbeanstalk update-environment --application-name ${Ardavan} --environment-name ${Ardavan-env} 
-                    """
+                bat 'docker build -t myapp:latest .'
+                bat 'docker run -d -p 8080:8080 myapp:latest'
                 }
             }
         }  
     }
-}
+
