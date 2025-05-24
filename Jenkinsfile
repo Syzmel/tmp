@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script{
                 def img = 'thhpd:2.4-alpine'
-                docker.image("${img}"}.run('-d', '-p', '80:80')
+                docker.image(img).run('-d', '-p', '80:80')
             }                  
         }
       }
