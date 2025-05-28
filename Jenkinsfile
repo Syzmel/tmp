@@ -4,7 +4,7 @@ pipeline {
        SONAR_TOKEN = '8bf909351a6f8d1ad0c61bdf9607d732b5c9a043'
        DOCKER_USERNAME = 'sit223'
        DOCKER_TOKEN = 'dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'    
-       IMAGE_NAME = 'jenkins/jenkins'     
+       IMAGE_NAME = 'sit223/ardavan'     
     }       
     stages {
         stage('Build') {
