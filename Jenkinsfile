@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script{
                     bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
-                    bat "docker push tomadonna/sit223hd:latest"
+                    bat "docker push jenkins/jenkins:latest"
                            
            }                  
         }
