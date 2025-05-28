@@ -2,9 +2,8 @@ pipeline {
     agent any
        environment {
        SONAR_TOKEN = '8bf909351a6f8d1ad0c61bdf9607d732b5c9a043'
-       AWS_REGION = 'ap-southeast-2' // Change based on your setup
-        AWS_APP_NAME = 'Ardavan'
-        AWS_ENV_NAME = 'Ardavan-env'
+       DOCKER_USERNAME = 'sit223'
+       DOCKER_TOKEN = 'dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'    
     }       
     stages {
         stage('Build') {
@@ -49,9 +48,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    withDockerRegistry([credentialsId: 'sit223', url: 'https://index.docker.io/v2/']) {
-                       bat 'docker login -u sit223 --password-stdin dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'
-                    }       
+                    bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
+                           
            }                  
         }
       }
