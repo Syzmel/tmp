@@ -54,7 +54,7 @@ pipeline {
                     bat "docker pull jenkins/jenkins"
 
                     // Run the Jenkins container
-                    bat "docker run -d -p 8080:8080 --name jenkins-server jenkins/jenkins"
+                    bat "docker run -d -p 9090:9090 --name jenkins-server jenkins/jenkins"
 
                     // Deploy your custom image
                     bat "docker run -d -p 8081:8081 --name my-app %IMAGE_NAME%"
