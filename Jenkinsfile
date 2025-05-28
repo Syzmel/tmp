@@ -49,7 +49,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                bat 'docker-compose -f docker-compose.yml up -d'
+                    withDockerRegistry([credentialsId: DOCKER_CREDENTIALS_ID, url: DOCKER_REGISTRY]) {
+                        bat 'docker build -t jenkins/jenkins:latest .'
+                        bat 'docker push sit223/ardavan:latest'
                   
            }                  
         }
