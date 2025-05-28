@@ -52,7 +52,7 @@ pipeline {
                     withDockerRegistry([credentialsId: DOCKER_CREDENTIALS_ID, url: DOCKER_REGISTRY]) {
                         bat 'docker build -t jenkins/jenkins:latest .'
                         bat 'docker push sit223/ardavan:latest'
-                  
+                    }       
            }                  
         }
       }
