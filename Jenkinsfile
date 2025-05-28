@@ -51,13 +51,13 @@ pipeline {
                     bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
                    
                    // Build and tag the Docker image
-                   bat "docker build -t sit223/sit223hd:latest ."
+                   bat "docker build -t jenkins/jenkins:latest ."
 
                   // Push the image to Docker Hub
-                  bat "docker push sit223/sit223hd:latest"
+                  bat "docker push jenkins/jenkins:latest"
 
                   // Run the container
-                  bat "docker run -d -p 8080:8080 --name my-app sit223/sit223hdp:latest"
+                  bat "docker run -d -p 8080:8080 --name jenkins/jenkins:latest"
                            
            }                  
         }
