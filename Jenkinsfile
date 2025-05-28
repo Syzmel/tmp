@@ -49,17 +49,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
+                    // Authenticate with Docker Hub
                     bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
-                    // Pull the Jenkins image
-                    bat "docker pull jenkins/jenkins"
 
-                    // Run the Jenkins container
-                    bat "docker run -d -p 9090:9090 --name jenkins-server jenkins/jenkins"
+                    // Tag the image
+                    bat "docker tag %IMAGE_NAME% %DOCKER_USERNAME%/%IMAGE_NAME%:latest"
 
-                    // Deploy your custom image
-                    bat "docker run -d -p 9090:9090 --name my-app %IMAGE_NAME%"
-                           
-           }                  
+                    // Push the image
+                    bat "docker push %DOCKER_USERNAME%/%IMAGE_NAME%:latest"
+                }                
         }
       }
    }  
