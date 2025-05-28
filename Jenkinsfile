@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    withDockerRegistry([credentialsId: 'sit223', url: 'https://index.docker.io/v1/']) {
+                    withDockerRegistry([credentialsId: 'sit223', url: 'https://index.docker.io/v2/']) {
                        bat 'docker login -u sit223 --password-stdin dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'
                     }       
            }                  
