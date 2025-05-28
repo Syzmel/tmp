@@ -49,9 +49,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    withDockerRegistry([credentialsId: 'sit223', url: 'https://index.docker.io/v1/access-token']) {
-                        bat 'docker build -t jenkins/jenkins:latest .'
-                        bat 'docker push sit223/ardavan:latest'
+                    withDockerRegistry([credentialsId: 'sit223', url: 'https://index.docker.io/v1/']) {
+                       bat 'docker login -u sit223 --password-stdin dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'
                     }       
            }                  
         }
