@@ -49,7 +49,15 @@ pipeline {
             steps {
                 script{
                     bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
-                    bat "docker push sit223/ardavan:latest"
+                   
+                   // Build and tag the Docker image
+                   bat "docker build -t sit223/sit223hd:latest ."
+
+                  // Push the image to Docker Hub
+                  bat "docker push sit223/sit223hd:latest"
+
+                  // Run the container
+                  bat "docker run -d -p 8080:8080 --name my-app sit223/sit223hdp:latest"
                            
            }                  
         }
