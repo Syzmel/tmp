@@ -4,6 +4,7 @@ pipeline {
        SONAR_TOKEN = '8bf909351a6f8d1ad0c61bdf9607d732b5c9a043'
        DOCKER_USERNAME = 'sit223'
        DOCKER_TOKEN = 'dckr_pat_72QBxkLhWcJj0-hsl7BE4zGBOL4'    
+       IMAGE_NAME = 'sit223/ardavan'     
     }       
     stages {
         stage('Build') {
@@ -49,15 +50,14 @@ pipeline {
             steps {
                 script{
                     bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
-                   
-                   // Build and tag the Docker image
-                   bat "docker build -t jenkins/jenkins:latest ."
+                    // Pull the Jenkins image
+                    bat "docker pull jenkins/jenkins"
 
-                  // Push the image to Docker Hub
-                  bat "docker push jenkins/jenkins:latest"
+                    // Run the Jenkins container
+                    bat "docker run -d -p 8080:8080 --name jenkins-server jenkins/jenkins"
 
-                  // Run the container
-                  bat "docker run -d -p 8080:8080 --name jenkins/jenkins:latest"
+                    // Deploy your custom image
+                    bat "docker run -d -p 8081:8081 --name my-app %IMAGE_NAME%"
                            
            }                  
         }
