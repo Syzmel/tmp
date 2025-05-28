@@ -49,18 +49,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                    bat "docker build -t %IMAGE_NAME% ."
-                    
-                    // Authenticate with Docker Hub
-                    bat "echo %DOCKER_TOKEN% | docker login -u %DOCKER_USERNAME% --password-stdin"
-
-                    // Tag the image
-                    bat "docker tag %IMAGE_NAME% %DOCKER_USERNAME%/%IMAGE_NAME%:latest"
-
-                    // Push the image
-                    bat "docker push %DOCKER_USERNAME%/%IMAGE_NAME%:latest"
-
-                    bat "docker run -d -p 8081:8081 --name my-app %DOCKER_USERNAME%/%IMAGE_NAME%:latest"
+                    img = 'jenkins/jenkins'
+                    docker.image("${img}").run('-d -p 80:80')
                 }                
         }
       }
