@@ -59,7 +59,7 @@ pipeline {
                 script {
                     octopusCreateRelease serverId: 'Octopus',
                         project: 'taskhd',
-                        releaseVersion: '2025.2.11861',
+                        releaseVersion: '2.11861',
                         environment: 'Production'          
                 }     
             }
