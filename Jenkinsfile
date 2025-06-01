@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script{
                     img = 'jenkins/jenkins'
-                    docker.image("${img}").run('-d -p 5001:5000')         
+                    docker.image("${img}").run('-d -p 5000:5000')         
            }                
          }
        }
