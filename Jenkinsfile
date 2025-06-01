@@ -59,7 +59,7 @@ pipeline {
                 script {
                     // def apiKey = 'API-ZXQUZH2LR6YXYIOJBERLEX93BW4GRD'
                     octopusCreateRelease serverId: 'Octopus',
-                        --server=https://sit223.octopus.app,
+                        --server='https://sit223.octopus.app',
                         project: 'taskhd',
                         releaseVersion: '2025.2.11861',
                         environment: 'Production'
