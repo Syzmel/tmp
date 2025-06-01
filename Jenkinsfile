@@ -57,10 +57,10 @@ pipeline {
         stage('Release') {
             steps {
                 script {
-                    octo create-release,
+                    octopusCreateRelease serverId: 'OctopusServer',
                         project: 'taskhd',
                         releaseVersion: '2025.2.11861',
-                        --server 'https://sit223.octopus.app',
+                        environment: 'Production',
                         --apiKey 'API-ZXQUZH2LR6YXYIOJBERLEX93BW4GRD'
                 }     
             }
