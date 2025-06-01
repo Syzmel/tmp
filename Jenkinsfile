@@ -59,8 +59,9 @@ pipeline {
                 script {
                     octopusCreateRelease serverId: 'Octopus',
                         project: 'taskhd',
-                        releaseVersion: '2.11861',
-                        environment: 'Production'          
+                        releaseVersion: '2025.2.11861',
+                        --server 'https://sit223.octopus.app/app#/Spaces-1/projects?page=1&pageSize=50',
+                        --apiKey 'API-ZXQUZH2LR6YXYIOJBERLEX93BW4GRD'
                 }     
             }
         }       
