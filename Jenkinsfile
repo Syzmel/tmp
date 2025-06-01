@@ -50,15 +50,17 @@ pipeline {
             steps {
                 script{
                     img = 'jenkins/jenkins'
-                    docker.image("${img}").run('-d -p 5001:5000')
-                    
+                    docker.image("${img}").run('-d -p 5001:5000')         
            }                
-        }
-      }
-stage('Release') {
+         }
+       }
+        stage('Release') {
             steps {
-                echo 'Creating Octopus release...'
-                bat 'octo create-release --project="taskhd" --version="2025.2.11861" --server="https://sit223.octopus.app/app#/Spaces-1/projects/taskhd/deployments/process?newlyCreatedProject=false" --apiKey="API-ZXQUZH2LR6YXYIOJBERLEX93BW4GRD"'
+                script {
+                    octopusCreateRelease serverId: 'Octopus',
+                        project: 'taskhd',
+                        releaseVersion: '2025.2.11861',
+                        environment: 'Production'          
             }
         }       
    }  
